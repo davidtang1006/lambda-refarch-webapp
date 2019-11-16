@@ -15,8 +15,8 @@
 
 var apigClientFactory = {};
 apigClientFactory.newClient = function (config) {
-    var apigClient = { };
-    if(config === undefined) {
+    var apigClient = {};
+    if (config === undefined) {
         config = {
             accessKey: '',
             secretKey: '',
@@ -27,33 +27,33 @@ apigClientFactory.newClient = function (config) {
             defaultAcceptType: 'application/json'
         };
     }
-    if(config.accessKey === undefined) {
+    if (config.accessKey === undefined) {
         config.accessKey = '';
     }
-    if(config.secretKey === undefined) {
+    if (config.secretKey === undefined) {
         config.secretKey = '';
     }
-    if(config.apiKey === undefined) {
+    if (config.apiKey === undefined) {
         config.apiKey = '';
     }
-    if(config.sessionToken === undefined) {
+    if (config.sessionToken === undefined) {
         config.sessionToken = '';
     }
-    if(config.region === undefined) {
+    if (config.region === undefined) {
         config.region = 'us-east-1';
     }
     //If defaultContentType is not defined then default to application/json
-    if(config.defaultContentType === undefined) {
+    if (config.defaultContentType === undefined) {
         config.defaultContentType = 'application/json';
     }
     //If defaultAcceptType is not defined then default to application/json
-    if(config.defaultAcceptType === undefined) {
+    if (config.defaultAcceptType === undefined) {
         config.defaultAcceptType = 'application/json';
     }
 
 
     // extract endpoint and path from url
-    var invokeUrl = '<UPDATE_WITH_API_endpoint>';
+    var invokeUrl = 'https://mmiadhoa04.execute-api.us-east-1.amazonaws.com/prod';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -84,7 +84,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.forumsGet = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
 
@@ -102,7 +102,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.forumsOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, ['id'], ['body']);
 
@@ -120,7 +120,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.forumsIdPostsGet = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, ['id'], ['body']);
 
@@ -138,7 +138,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.forumsIdPostsPost = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, ['id'], ['body']);
 
@@ -156,7 +156,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.forumsIdPostsOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, ['id'], ['body']);
 
@@ -174,7 +174,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.loginPost = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
 
@@ -192,7 +192,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.loginOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
 
@@ -210,7 +210,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.postsIdGet = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, ['id'], ['body']);
 
@@ -228,7 +228,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.postsIdOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, ['id'], ['body']);
 
@@ -246,7 +246,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.postsIdCommentsGet = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, ['id'], ['body']);
 
@@ -264,7 +264,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.postsIdCommentsPost = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, ['id'], ['body']);
 
@@ -282,7 +282,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.postsIdCommentsOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, ['id'], ['body']);
 
@@ -300,7 +300,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.postsIdCommentsCreatedAtGet = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, ['created-at', 'id'], ['body']);
 
@@ -318,7 +318,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.postsIdCommentsCreatedAtOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, ['created-at', 'id'], ['body']);
 
@@ -336,7 +336,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.usersPost = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
 
@@ -354,7 +354,7 @@ apigClientFactory.newClient = function (config) {
 
 
     apigClient.usersOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
+        if (additionalParams === undefined) { additionalParams = {}; }
 
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
 
