@@ -19,6 +19,7 @@
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
     <!-- endbuild -->
+    
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -30,6 +31,22 @@
       <acme-navbar></acme-navbar>
     </header>
     -->
+
+    <script src="https://ec2-3-87-220-96.compute-1.amazonaws.com:8443/auth/js/keycloak.js"></script>
+    <script src="https://rawgit.com/keycloak/keycloak-js-bower/master/dist/keycloak.min.js" ></script>
+    
+    <script>
+      var keycloak = new Keycloak({
+                                    url: 'https://ec2-3-87-220-96.compute-1.amazonaws.com:8443/auth',
+                                    realm: 'webapp',
+                                    clientId: 'angularapp'
+                                  });
+        keycloak.init({
+            onLoad: 'login-required',
+            promiseType: 'native',
+        });
+
+    </script>
 
     <div ui-view></div>
     <sidenav></sidenav>

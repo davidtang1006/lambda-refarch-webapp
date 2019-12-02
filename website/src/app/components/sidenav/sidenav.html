@@ -13,8 +13,13 @@
     </h1>
   </md-toolbar>
 
-  <md-content layout-padding>  
-      <form layout="column" ng-submit="vm.login()" ng-if="!vm.authenticated">
+  <md-content layout-padding> 
+      <form layout="column" ng-submit="vm.myregister() && vm.mylogin()" ng-if="!vm.authenticated">
+          <md-button type="submit" class="md-raised md-primary" aria-label="Login">
+          LogOut / Create Post
+          </md-button>
+      </form>
+      <!-- <form layout="column" ng-submit="vm.login()" ng-if="!vm.authenticated">
           <md-input-container>
             <label for="emailInput">Email</label>
             <input type="email" id="emailInput"
@@ -43,11 +48,11 @@
               {{ (vm.register)?'Register':'Login' }}
             </div>
           </md-button>
-        </form>
+        </form> -->
 
         <form layout="column" ng-submit="vm.logout()" ng-if="vm.authenticated">
-          <md-subheader>Logged in as <strong>{{vm.user.email}}</strong></md-subheader>
-          <md-button type="submit" class="md-raised md-primary" ng-disabled="vm.loading" aria-label="Logout">
+          <md-subheader>Logged in as <strong>anonymous</strong></md-subheader>
+          <md-button type="submit" class="md-raised md-primary" ng-disabled="false" ng-disabled="vm.loading" aria-label="Logout" href="https://ec2-3-87-220-96.compute-1.amazonaws.com:8443/auth/realms/webapp/protocol/openid-connect/logout?redirect_uri=http://localhost:3000">
             <div layout="row" layout-align="center" ng-if="vm.loading">
               <div data-loader="ball-fade"></div>
             </div>

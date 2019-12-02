@@ -30,21 +30,70 @@
 			var vm = this;
 				vm.user = {};
 				vm.loading = false;
+				vm.authenticated = false;
+				vm.loading = false;
 
 			$scope.$watch(
 		      function() { 
 		        return authService.sessionStatus(); 
 		      }, 
 		      function(authenticated) {
-		        vm.authenticated = authenticated;
+		        vm.authenticated = true;
 		        if (authenticated && !vm.user.email) {
 		        	vm.user.email = authService.me().email;
 		        }
-		    });
+			});
+			vm.loghaha = function () {
+				$log.error("HaHa")
+			}
 
 			vm.close = function() {
 				$mdSidenav('right').close();
 			};
+			vm.myregister = function() {
+				vm.user.email = "admin@admin.com";
+				vm.user.password = "admin";
+				vm.user.password2 = "admin";
+				var params = {
+					'email': vm.user.email,
+					'password': vm.user.password
+				};
+				apigService.register(params)
+							.then(function(result) {
+								$log.debug(result);
+								apigService.refresh().then(function() {
+									vm.authenticated = true;
+									vm.loading = false;
+								},function(error) {
+									vm.loading = false;
+									$log.error(error);
+									toastr.error('failed to login');
+								});
+							},function(error) {
+								$log.error(error);
+								vm.loading = false;
+								vm.authenticated = false;
+								toastr.error('A login error occurred, please try logging in with your credentials.');
+							});
+			}
+			vm.mylogin = function () {
+				apigService.login(vm.user)
+						.then(function(result) {
+							apigService.refresh().then(function() {
+								vm.authenticated = true;
+								vm.loading = false;
+							},function(error) {
+								vm.loading = false;
+								$log.error(error);
+								toastr.error('failed to login');
+							});
+						},function(error) {
+							vm.loading = false;
+							vm.authenticated = false;
+							$log.error(error);
+							toastr.error('A login error occurred, please try again.');
+						});
+			}
 			vm.login = function() {
 				vm.loading = true;
 				if (vm.register) {
