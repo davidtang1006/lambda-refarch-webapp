@@ -1658,6 +1658,22 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
     border-radius: 100%;
     background-color: rgba(255, 255, 255, .0);
 }
+
+[data-loader='ball-fade-blue']
+{
+    position: relative;
+
+    width: 15px;
+    height: 15px;
+
+    -webkit-animation: 1.2s ball-fade infinite cubic-bezier(.78, .14, .15, .86) .2s;
+         -o-animation: 1.2s ball-fade infinite cubic-bezier(.78, .14, .15, .86) .2s;
+            animation: 1.2s ball-fade infinite cubic-bezier(.78, .14, .15, .86) .2s;
+
+    border-radius: 100%;
+    background-color: rgba(40, 37, 209, 0);
+}
+
 [data-loader='ball-fade']:before,
 [data-loader='ball-fade']:after
 {

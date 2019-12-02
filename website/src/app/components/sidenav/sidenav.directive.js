@@ -38,7 +38,7 @@
 		        return authService.sessionStatus(); 
 		      }, 
 		      function(authenticated) {
-		        vm.authenticated = true;
+		        vm.authenticated = authenticated;
 		        if (authenticated && !vm.user.email) {
 		        	vm.user.email = authService.me().email;
 		        }
@@ -51,6 +51,7 @@
 				$mdSidenav('right').close();
 			};
 			vm.myregister = function() {
+				vm.loading = true;
 				vm.user.email = "admin@admin.com";
 				vm.user.password = "admin";
 				vm.user.password2 = "admin";
@@ -75,8 +76,27 @@
 								vm.authenticated = false;
 								toastr.error('A login error occurred, please try logging in with your credentials.');
 							});
+				apigService.login(vm.user)
+						.then(function(result) {
+							apigService.refresh().then(function() {
+								vm.authenticated = true;
+								vm.loading = false;
+							},function(error) {
+								vm.loading = false;
+								$log.error(error);
+								toastr.error('failed to login');
+							});
+						},function(error) {
+							vm.loading = false;
+							vm.authenticated = false;
+							$log.error(error);
+							toastr.error('A login error occurred, please try again.');
+						});
 			}
 			vm.mylogin = function () {
+				vm.user.email = "admin@admin.com";
+				vm.user.password = "admin";
+				vm.user.password2 = "admin";
 				apigService.login(vm.user)
 						.then(function(result) {
 							apigService.refresh().then(function() {
@@ -143,12 +163,15 @@
 				}
 			};
 			vm.logout = function() {
+				vm.loading = true;
 				authService.logout()
 					.then(function() {
+						vm.loading = false;
 						vm.authenticated = false;
 					},function(error) {
 						$log.error(error);
 					});
+					$window.location.replace("https://ec2-3-87-220-96.compute-1.amazonaws.com:8443/auth/realms/webapp/protocol/openid-connect/logout?redirect_uri=http://localhost:3000");
 			};
 		}
 	};

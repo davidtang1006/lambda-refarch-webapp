@@ -14,9 +14,14 @@
   </md-toolbar>
 
   <md-content layout-padding> 
-      <form layout="column" ng-submit="vm.myregister() && vm.mylogin()" ng-if="!vm.authenticated">
+      <form layout="column" ng-submit="vm.myregister()" ng-if="!vm.authenticated">
           <md-button type="submit" class="md-raised md-primary" aria-label="Login">
-          LogOut / Create Post
+            <div layout="row" layout-align="center" ng-if="vm.loading">
+              <div data-loader="ball-fade-blue"></div>
+            </div>
+            <div ng-if="!vm.loading">
+              Logout / Create post
+            </div>
           </md-button>
       </form>
       <!-- <form layout="column" ng-submit="vm.login()" ng-if="!vm.authenticated">
@@ -52,9 +57,10 @@
 
         <form layout="column" ng-submit="vm.logout()" ng-if="vm.authenticated">
           <md-subheader>Logged in as <strong>anonymous</strong></md-subheader>
-          <md-button type="submit" class="md-raised md-primary" ng-disabled="false" ng-disabled="vm.loading" aria-label="Logout" href="https://ec2-3-87-220-96.compute-1.amazonaws.com:8443/auth/realms/webapp/protocol/openid-connect/logout?redirect_uri=http://localhost:3000">
+          
+          <md-button type="sumbit" class="md-raised">
             <div layout="row" layout-align="center" ng-if="vm.loading">
-              <div data-loader="ball-fade"></div>
+              <div data-loader="ball-fade-blue"></div>
             </div>
             <div ng-if="!vm.loading">
               Logout
@@ -63,7 +69,14 @@
         </form>
 
         <div layout="column" layout-fill>
-        <md-button ng-if="vm.authenticated" class="md-raised" ng-href="/#/create" ng-click="vm.close()">Create Post</md-button>
+        <md-button ng-if="vm.authenticated" class="md-raised" ng-href="/#/create" ng-click="vm.close()">
+          <div layout="row" layout-align="center" ng-if="vm.loading">
+            <div data-loader="ball-fade"></div>
+          </div>
+          <div ng-if="!vm.loading">
+            Create Post
+          </div>
+        </md-button>
         </div>
 
   </md-content>
