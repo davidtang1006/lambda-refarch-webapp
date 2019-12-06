@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://a7f4eb7d617f211eabc080a7bc647b09-1245001470.us-west-2.elb.amazonaws.com:8080
+functions:
+  openfaas-functions:
+    lang: java8
+    handler: ./openfaas-functions
+    image: davidtang1006/openfaas-functions:latest
+
